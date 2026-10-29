@@ -1,0 +1,35 @@
+{# TELA DE LOGIN. Usa o template SEM menu (base_login.html). #}
+{% extends 'base_login.html' %}
+
+{# Texto que aparece na aba do navegador #}
+{% block titulo %}Login - Cine Club{% endblock %}
+
+{% block content %}
+<h3 class="text-center mb-4">Login</h3>
+
+<!-- Este login é só ilustrativo: o formulário apenas leva ao dashboard (rota "dashboard"),
+     sem conferir e-mail e senha. Sem method, o formulário usa GET. -->
+<form action="{{ url_for('dashboard') }}">
+
+  <!-- Campo de e-mail. type="email" já valida o formato -->
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail:</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail">
+  </div>
+
+  <!-- Campo de senha: type="password" esconde o que é digitado -->
+  <div class="mb-3">
+    <label for="senha" class="form-label">Password:</label>
+    <input type="password" class="form-control" id="senha" name="senha" placeholder="Digite sua senha">
+  </div>
+
+  <!-- Botão que envia o formulário. w-100 = largura total -->
+  <button type="submit" class="btn btn-danger w-100 mb-3">Entrar</button>
+
+  <!-- Recuperar Senha e CADASTRAR ainda não têm página (href="#" não leva a lugar nenhum) -->
+  <div class="text-center mb-3">
+    <a href="#" class="text-decoration-none">Recuperar Senha</a>
+  </div>
+  <a href="#" class="btn btn-primary w-100">CADASTRAR</a>
+</form>
+{% endblock %}
